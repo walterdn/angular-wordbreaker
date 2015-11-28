@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/base.css">
+	</head>
+	<body data-ng-app="wordbreaker">
+		<main data-ng-controller="WordbreakerController">
+    	<button id="toggleUntriedButton" data-ng-click="toggleUntriedLetters()">hide/show untried letters</button>
+			<div id="untried" ng-if="areUntriedLettersShown">
+		    <div ng-repeat="letter in untriedLetters" class="untriedLetters">
+		    	{{letter}}
+		    </div>
+		  </div>
+
+			<table id="history"></table>
+			<div id="container">
+				<div id="title">wor<span style="color:#cc0000">db</span>reaker</div>
+
+				<form id="options">
+					<label> answer: </label><input id="answer" type="text" maxlength="8" value="">
+				  <input type="radio" name="mode" id="normal" checked> normal
+				  <input type="radio" name="mode" id="hard"> hard
+				</form>
+
+				<div id="newgame" data-ng-click="newGame()">start the game</div>
+
+				<form class="guessForm" ng-submit="guess()">
+					<input id="guessInput" type="text" maxlength="8" value="" autocomplete="off">
+					<br><input id="guessButton" type="submit" value="guess">
+				</form> 
+
+
+				<table id="feedback"></table>
+			</div>		
+		</main>
+		<script src='https://code.jquery.com/jquery-1.9.1.min.js'></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+		<script src='js/bundle.js'></script>
+	</body>
+</html>
+
